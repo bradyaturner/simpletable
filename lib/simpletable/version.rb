@@ -1,3 +1,3 @@
-module SimpleTable
+module SimpleTableConst
   VERSION = "0.1.1"
 end

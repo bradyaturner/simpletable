@@ -5,7 +5,7 @@ require 'simpletable/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "simpletable"
-  spec.version       = SimpleTable::VERSION
+  spec.version       = SimpleTableConst::VERSION
   spec.authors       = ["Brady Turner"]
   spec.email         = ["bradyaturner@gmail.com"]
   spec.description   = %q{Create and format tables}
