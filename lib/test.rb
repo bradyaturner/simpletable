@@ -24,22 +24,14 @@ objs << TestObject.new("thisisthebiggestword","thisisthebiggestword","thisistheb
 
 t = SimpleTable.new
 
-t.from_objects(objs,titles,methods).print_text
-print "\n"
-t.print_csv
-print "\n"
+puts t.from_objects(objs,titles,methods).text << "\n"
+puts t.csv << "\n"
 
-t.from_objects(objs,titles,methods,{:divider=>"*"}).print_text
-print "\n"
-t.print_csv
-print "\n"
+puts t.from_objects(objs,titles,methods,{:divider=>"*"}).text << "\n"
+puts t.csv << "\n"
 
-t.from_objects(objs,titles,methods,{:divider=>"-",:padding=>5}).print_text
-print "\n"
-t.print_csv
-print "\n"
+puts t.from_objects(objs,titles,methods,{:divider=>"-",:padding=>5}).text << "\n"
+puts t.csv << "\n"
 
-t.from_objects(objs,titles2,methods,{:divider=>"-",:padding=>5}).print_text
-print "\n"
-t.print_csv(";")
-print "\n"
+puts t.from_objects(objs,titles2,methods,{:divider=>"-",:padding=>5}).text << "\n"
+puts t.csv(";") << "\n"
