@@ -14,7 +14,7 @@ class SimpleTable
     self
   end
 
-  def print_text
+  def text
     widths = []
     # calculate column widths
     @titles.zip(@methods).each do |title,method|
@@ -22,34 +22,37 @@ class SimpleTable
     end
 
     # print table header
-    print_row(@titles,widths)
-    puts @divider * (widths.inject(:+) - @padding)  # sum of column widths - padding
+    text = row(@titles,widths)
+    text << (@divider * (widths.inject(:+) - @padding)) << "\n"  # sum of column widths - padding
 
     # print table body
     @objects.each do |o|
       data = @methods.collect{ |m| o.send(m) } # collect row data
-      print_row(data,widths)
+      text << row(data,widths)
     end
+    text
   end
 
-  def print_csv(separator=",")
+  def csv(separator=",")
     # quote strings w/ embedded separator characters
     titles = []
     @titles.each {|t| titles << (t.include?(separator) ? t.gsub(t,"\"#{t}\"") : t)}
 
     # print table header
-    puts titles.join separator
+    text = titles.join(separator) << "\n"
 
     # print table body
     @objects.each do |o|
       data = @methods.collect{ |m| o.send(m) } # collect row data
-      puts data.join separator
+      text << data.join(separator) << "\n"
     end
+    text
   end
 
 private
-  def print_row(data,widths)
-    data.zip(widths).each { |d,w| print d.to_s.ljust(w) }
-    print "\n"
+  def row(data,widths)
+    row = ""
+    data.zip(widths).each { |d,w| row << d.to_s.ljust(w) }
+    row << "\n"
   end
 end
