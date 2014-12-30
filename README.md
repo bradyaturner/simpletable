@@ -10,6 +10,10 @@ Installation
 gem install simpletable 
 ```
 
+Basic Usage
+-----
+See [lib/test.rb](lib/test.rb) for usage samples.
+
 Development
 -----
 #### Build:
