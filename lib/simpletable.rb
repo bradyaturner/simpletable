@@ -4,9 +4,6 @@ DEFAULT_DIVIDER = "="
 DEFAULT_PADDING = 2
 
 class SimpleTable
-  def initialize
-  end
-
   def from_objects( objects, titles, methods, options = {} )
     raise "Mismatched number of methods and column titles" if titles.length != methods.length
     @objects = objects
@@ -32,6 +29,21 @@ class SimpleTable
     @objects.each do |o|
       data = @methods.collect{ |m| o.send(m) } # collect row data
       print_row(data,widths)
+    end
+  end
+
+  def print_csv(separator=",")
+    # quote strings w/ embedded separator characters
+    titles = []
+    @titles.each {|t| titles << (t.include?(separator) ? t.gsub(t,"\"#{t}\"") : t)}
+
+    # print table header
+    puts titles.join separator
+
+    # print table body
+    @objects.each do |o|
+      data = @methods.collect{ |m| o.send(m) } # collect row data
+      puts data.join separator
     end
   end
 
