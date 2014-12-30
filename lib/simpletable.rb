@@ -29,7 +29,7 @@ module SimpleTable
 
 private
   def print_row(data,widths)
-    data.zip(widths).each { |d,w| print d.ljust(w) }
+    data.zip(widths).each { |d,w| print d.to_s.ljust(w) }
     print "\n"
   end
 end
