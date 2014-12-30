@@ -1,29 +1,24 @@
-# simpletable
+simpletable
+========
+A Ruby library for easily formatting tables.
 
-TODO: Write a gem description
+* simpletable on RubyGems: https://rubygems.org/gems/simpletable
 
-## Installation
+Installation
+----
+```
+gem install simpletable 
+```
 
-Add this line to your application's Gemfile:
+Development
+-----
+#### Build:
+```
+rake build
+```
 
-    gem 'simpletable'
+#### Install:
+```
+rake install
+```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install simpletable
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
