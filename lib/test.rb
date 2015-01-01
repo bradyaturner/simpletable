@@ -11,9 +11,9 @@ class TestObject
   end
 end
 
-titles = [ "Title A", "Title B is very long, the longest", "Title C" ]
-titles2 = [ "Title A", "Title B", "Title C is very long; the longest" ]
-methods = [ :p1, :p2, :p3 ]
+titles = [ "Title A", "Title B is very long, the longest", "Title C", "Title D" ]
+titles2 = [ "Title A", "Title B", "Title C", "Title D is very long; the longest" ]
+methods = [ :p1, :p2, :p4, :p3 ]
 
 objs = []
 objs << TestObject.new("thisisaword","anotherword","short")
