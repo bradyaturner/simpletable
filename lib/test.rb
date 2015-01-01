@@ -25,10 +25,11 @@ objs << TestObject.new("thisisthebiggestword","thisisthebiggestword","thisistheb
 t = SimpleTable.new
 
 puts t.from_objects(objs,titles,methods).text << "\n"
-puts t.csv << "\n"
+t.placeholder = "+"
+puts t.csv("+") << "\n"
 
-puts t.from_objects(objs,titles,methods,{:divider=>"*"}).text << "\n"
-puts t.csv << "\n"
+puts t.from_objects(objs,titles,methods,{:divider=>"*",:placeholder=>"-"}).text << "\n"
+puts t.csv(",") << "\n"
 
 puts t.from_objects(objs,titles,methods,{:divider=>"-",:padding=>5}).text << "\n"
 puts t.csv << "\n"
