@@ -2,6 +2,7 @@ require "simpletable/version"
 
 DEFAULT_DIVIDER = "="
 DEFAULT_PADDING = 2
+DEFAULT_PLACEHOLDER = "-"
 
 class SimpleTable
   def from_objects( objects, titles, methods, options = {} )
@@ -18,7 +19,7 @@ class SimpleTable
     widths = []
     # calculate column widths
     @titles.zip(@methods).each do |title,method|
-      widths << @objects.collect { |o| o.send(method).to_s }.push(title).group_by(&:size).max.first + @padding
+      widths << @objects.collect { |o| call_method(o,method) }.push(title).group_by(&:size).max.first + @padding
     end
 
     # print table header
@@ -27,7 +28,7 @@ class SimpleTable
 
     # print table body
     @objects.each do |o|
-      data = @methods.collect{ |m| o.send(m) } # collect row data
+      data = @methods.collect{ |m| call_method(o,m) } # collect row data
       text << row(data,widths)
     end
     text
@@ -43,7 +44,7 @@ class SimpleTable
 
     # print table body
     @objects.each do |o|
-      data = @methods.collect{ |m| o.send(m) } # collect row data
+      data = @methods.collect{ |m| call_method(o,m) } # collect row data
       text << data.join(separator) << "\n"
     end
     text
@@ -54,5 +55,13 @@ private
     row = ""
     data.zip(widths).each { |d,w| row << d.to_s.ljust(w) }
     row << "\n"
+  end
+
+  def call_method(obj,method)
+    begin
+      obj.send(method).to_s
+    rescue NoMethodError
+      DEFAULT_PLACEHOLDER
+    end
   end
 end
