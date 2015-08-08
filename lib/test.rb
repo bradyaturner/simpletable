@@ -13,7 +13,7 @@ end
 
 titles = [ "Title A", "Title B is very long, the longest", "Title C", "Title D" ]
 titles2 = [ "Title A", "Title B", "Title C", "Title D is very long; the longest" ]
-methods = [ :p1, :p2, :p4, :p3 ]
+methods = [ :p1, :p2, :p4, [:p3,:length] ]
 
 objs = []
 objs << TestObject.new("thisisaword","anotherword","short")
