@@ -60,9 +60,15 @@ private
     row << "\n"
   end
 
-  def call_method(obj,method)
+  def call_method(obj,methods)
     begin
-      obj.send(method).to_s
+      ret = obj
+      # cast methods to array, for nested calls
+      methods = [methods].flatten
+      methods.each do |m|
+        ret = ret.send(m)
+      end
+      ret.to_s
     rescue NoMethodError
       @placeholder == @separator ? "\"#{@placeholder}\"" : @placeholder
     end
